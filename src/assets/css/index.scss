@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('./weatherIcons/weather-icons.css');
+
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+$mainColor: #1E1E2C;
+$lightContrast: #515178;
+$lightShade: #565699;
+$lightShade20: #7d7dc5;
+
+* {
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+main {
+    // padding: 0 5%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    background: $mainColor;
+}
+
+.card--size {
+    $size: 38vw;
+
+    height: $size;
+    width: calc($size * 0.80);
+}
+
+.glassMorph {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-wrapper {
+    @include flex-col;
+    padding: 1.5vh;
+    border-radius: 5%;
+
+    .card__icon {
+        margin-top: 10%;
+        font-size: 15vw;
+        text-align: center;
+
+        &::before {
+            display: inline-block;
+        }
+    }
+
+    .card__body {
+        @include flex-col();
+        align-items: center;
+        text-align: center;
+        font-family: 'Ubuntu';
+        margin-top: auto;
+        margin-bottom: 2% ;
+
+        .card__title {
+            color: $lightShade20;
+            font-size: 1.75rem;
+        }
+
+        .card__temperature {
+            @include flex-col();
+            font-size: 1.5rem;
+            margin-top: 10%;
+            width: 100%;
+
+            &__minmax {
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.25rem;
+                margin-top: 5%;
+            }
+
+            &--max {}
+
+            &--min {}
+        }
+
+    }
+}
+
+.card__theme--var1 {
+    backdrop-filter: blur(10px);
+    background-image: linear-gradient(40deg,
+            hsl(240deg 32% 12%) 0%,
+            hsl(240deg 31% 12%) 18%,
+            hsl(240deg 29% 12%) 26%,
+            hsl(240deg 28% 13%) 33%,
+            hsl(240deg 26% 13%) 39%,
+            hsl(240deg 26% 12%) 44%,
+            hsl(239deg 26% 12%) 50%,
+            hsl(239deg 26% 11%) 56%,
+            hsl(240deg 26% 11%) 61%,
+            hsl(240deg 28% 11%) 67%,
+            hsl(240deg 29% 11%) 74%,
+            hsl(240deg 31% 12%) 82%,
+            hsl(240deg 32% 12%) 100%);
+    // border: 2px solid $lightContrast;
+    border-radius: 10%;
+    color: $lightShade;
+
+    .card__icon {
+        &::before {
+            // color: white;
+        }
+    }
+
+
+}
