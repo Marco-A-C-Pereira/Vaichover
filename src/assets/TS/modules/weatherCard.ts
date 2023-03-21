@@ -8,12 +8,15 @@ const templateFrag = document.getElementById(
 
 function createCard(city: CityData): void {
   const templateNodes = templateFrag.content.firstElementChild?.cloneNode(true) as HTMLElement;
+  const cardIcon:string = selectIcon(city.currentWeather.weathercode);
   
   templateNodes.querySelector(".card__title")!.innerHTML = city.cityName;
   templateNodes.querySelector(".card__temperature--curr")!.textContent = `Temperatura: ${city.currentWeather.temperature}º`;
   templateNodes.querySelector(".card__temperature--max")!.textContent = `Max: ${city.daily.tempMax}º`;
   templateNodes.querySelector(".card__temperature--min")!.textContent = `Max: ${city.daily.tempMin}º`;
-  templateNodes.querySelector(".card__icon")!.classList.add(selectIcon(city.currentWeather.weathercode));
+  templateNodes.querySelector(".card__icon")!.classList.add(cardIcon);
+    if(cardIcon.includes('rain') || cardIcon.includes('thunderstorm')) 
+    templateNodes.classList.add('rain')
 
   document.querySelector(".cards__container")?.appendChild(templateNodes);
 }
@@ -22,7 +25,7 @@ function selectIcon(weathercode: number):string {
   let isNight: 'night' | 'day' = (new Date().getHours() >= 18 || new Date().getHours() <= 6) ? 'night' : 'day';
 
   // Tabela de códigos: https://open-meteo.com/en/docs
-  if (weathercode === 0) return `wi-${isNight}-sunny`;
+  if (weathercode === 0) return  isNight === 'night' ? 'wi-night-clear' : 'wi-day-sunny';
   else if (weathercode >= 1 && weathercode <= 3) return `wi-${isNight}-cloudy`;
   else if (weathercode >= 45 && weathercode <= 48)  return `wi-${isNight}-fog`;
   else if (weathercode >= 51 || weathercode <= 82) return `wi-${isNight}-rain`; // Chuva

@@ -81,6 +81,10 @@ main {
     min-width: calc($size * 0.80);
 }
 
+.rain {
+    border: 3px solid rgb(22, 160, 160);
+}
+
 .card-wrapper {
     @include flex-col;
     padding: 1.5vh;
