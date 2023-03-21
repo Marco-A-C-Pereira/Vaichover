@@ -8,8 +8,6 @@ const templateFrag = document.getElementById(
 
 function createCard(city: CityData): void {
   const templateNodes = templateFrag.content.firstElementChild?.cloneNode(true) as HTMLElement;
-
-  console.log(city);
   
   templateNodes.querySelector(".card__title")!.innerHTML = city.cityName;
   templateNodes.querySelector(".card__temperature--curr")!.textContent = `Temperatura: ${city.currentWeather.temperature}º`;

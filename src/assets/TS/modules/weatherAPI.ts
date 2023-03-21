@@ -21,11 +21,11 @@ const mainCities: CityQuerry[] = [
 
 async function getMainCities(): Promise<CityData[]> {
   let cityData: CityData[] = [];
-  let cache: string | null = localStorage.getItem("mainCities");
+  let cache: string | null =  sessionStorage.getItem("mainCities");
 
   if (cache) {
     cityData = getMainCache(cache);
-    console.log("cityData from cache:", cityData);
+    // console.log("cityData from cache:", cityData);
   }
 
   // TODO - Utilizar a Lib Loadash para comparar a consulta como cache no futuro
@@ -72,7 +72,7 @@ async function querryGen(
 }
 
 function setCache(obj: object[]): void {
-  localStorage.setItem("mainCities", JSON.stringify(obj));
+  sessionStorage.setItem("mainCities", JSON.stringify(obj));
 }
 
 function getMainCache(cache: string): CityData[] {
@@ -94,8 +94,6 @@ function cityShape(apiCall: any, cityName:string = 'Sua cidade'): CityData {
       riskOfRain: apiCall.daily.precipitation_probability_max,
     },
   };
-
-  console.log("tratedObs", tretatedCall);
 
   return tretatedCall;
 }

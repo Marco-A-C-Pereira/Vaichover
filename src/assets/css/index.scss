@@ -28,10 +28,8 @@ body {
 
 main {
     @include flex-col();
-    align-items: center;
-    justify-content: center;
     // padding: 0 5%;
-    height: 100vh;
+    // height: 100vh;
 
 }
 
@@ -39,21 +37,21 @@ main {
     @include flex-col();
     align-items: center;
     justify-content: center;
-
-    margin-top: 15rem;
+    text-align: center;
     margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 .app__title{
     color: #AAA;
-    font-size: 5rem;
+    font-size: 4em;
     font-family: sans-serif;
     margin-bottom: 0.5rem;
     overflow-wrap: break-word;
 }
 
 .btn__descubra{
-    font-size: 3rem;
+    font-size: 2.5rem;
     background: none;
     color: $lightShade;
     border: 5px solid ;
@@ -62,7 +60,7 @@ main {
 }
 
 .cards__container--title{
-    font-size: 3rem;
+    font-size: 2rem;
     color: #AAA;
     font-family: sans-serif;
     text-align: center;
@@ -72,24 +70,15 @@ main {
 .cards__container{
     display: flex;
     justify-content: center;
-    // flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 5vw;
 }
 
 .card--size {
-    $size: 38vw;
+    $size: 90%;
     
     min-height: $size;
     min-width: calc($size * 0.80);
-}
-
-.glassMorph {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .card-wrapper {
@@ -170,5 +159,145 @@ main {
         }
     }
 
+
+}
+
+@media screen and (min-width: 600px) {
+    .btn__descubra {
+        font-size: 3rem;
+    }
+    
+    .cards__container {
+        flex-wrap: wrap;
+    }
+
+    .card--size {
+        $size: 60%;
+        
+        min-height: $size;
+        min-width: calc($size * 0.80);
+    }
+
+    .card__icon {
+        margin-top: 10%;
+        font-size: 10vw;
+        text-align: center;
+
+        &::before {
+            display: inline-block;
+            font-size: 90%;
+        }
+    }
+
+    .card-wrapper{
+        .card__body {
+            margin-top: 1.25rem;
+
+            .card__title {
+                font-size: 2.5rem;
+            }
+
+            .card__temperature {
+                font-size: 2rem;
+                
+                &__minmax{
+                    font-size: 1.5rem;
+                    margin: 5% 2vw 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .app__title {
+        font-size: 5rem;
+    }
+
+    .cards__container {
+        flex-wrap: nowrap;
+    }
+
+    .card--size {
+        $size: 33%;
+        
+        min-height: $size;
+        min-width: calc($size * 0.80);
+    }
+
+    .cards__container--title {
+        font-size: 2.5rem
+    }
+
+    .card-wrapper{
+        .card__body {
+            .card__title {
+                font-size: 2rem;
+            }
+
+            .card__temperature {
+                font-size: 1.5rem;
+                
+                &__minmax{
+                    font-size: 1.25rem;
+                    margin: 5% 2vw 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .app__title {
+        font-size: 5.5rem;
+    }
+
+    .cards__container--title {
+        font-size: 3rem
+    }
+
+
+    .card--size {
+        $size: 20vw;
+        
+        min-height: $size;
+        min-width: calc($size * 0.80);
+    }
+
+
+
+    .card-wrapper{
+
+        .card__icon {
+            margin-top: 8%;
+            font-size: 10vw;
+            text-align: center;
+    
+            &::before {
+                display: inline-block;
+                font-size: 75%;
+            }
+        }
+
+        .card__body {
+            .card__title {
+                font-size: 2.5rem;
+            }
+
+            .card__temperature {
+                font-size: 2rem;
+                
+                &__minmax{
+                    font-size: 1.50rem;
+                    margin: 5% 2vw 0;
+                }
+            }
+        }
+    }
 
 }
