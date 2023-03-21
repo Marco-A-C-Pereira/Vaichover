@@ -38,7 +38,7 @@ async function getMainCities(): Promise<CityData[]> {
       );
     }
 
-    console.log("cityData from API:", cityData);
+    // console.log("cityData from API:", cityData);
     setCache(cityData);
   }
 
