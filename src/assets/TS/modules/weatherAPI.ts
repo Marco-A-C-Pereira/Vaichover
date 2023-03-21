@@ -1,6 +1,6 @@
 import { CityData } from "./CityData";
 
-export { getMainCities };
+export { getMainCities, getUserCity};
 
 type CityQuerry = {
   name: string;
@@ -45,6 +45,19 @@ async function getMainCities(): Promise<CityData[]> {
   return cityData;
 }
 
+async function getUserCity(): Promise<CityData> {
+  const position:any = await getPosition()
+  
+  return cityShape(await querryGen(position.coords?.latitude, position.coords?.longitude)) 
+}
+
+function getPosition(){
+  return new Promise((res, rej) => {
+    navigator.geolocation.getCurrentPosition(res, rej)
+  })
+
+}
+
 async function querryGen(
   latitude: number,
   longitude: number
@@ -66,7 +79,7 @@ function getMainCache(cache: string): CityData[] {
   return JSON.parse(cache);
 }
 
-function cityShape(apiCall: any, cityName:string): CityData {
+function cityShape(apiCall: any, cityName:string = 'Sua cidade'): CityData {
   let tretatedCall: CityData = {
     cityName: cityName ,
     currentWeather: {
